@@ -38,10 +38,21 @@ class QuizController:
 
     @staticmethod
     def get_questions(quiz_id):
-        out = QuizService.get_quiz_questions_for_taking(quiz_id)
-        if out is None:
-            return jsonify({'error': 'Quiz not found'}), 404
-        return jsonify({'questions': out}), 200
+        index = request.args.get('index', default=None, type=int)  # optional ?index
+        if index is not None:
+            out = QuizService.get_quiz_question_by_index(quiz_id, index)
+            if out is None:
+                return jsonify({'error': 'Quiz not found or index out of range'}), 404
+            # wrap single question in a list
+            return jsonify({'questions': [out]}), 200
+        else:
+            # return all questions
+            out = QuizService.get_quiz_questions_for_taking(quiz_id)
+            if out is None:
+                return jsonify({'error': 'Quiz not found'}), 404
+            return jsonify({'questions': out}), 200
+
+
 
     @staticmethod
     def submit_answers(quiz_id):

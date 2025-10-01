@@ -1,61 +1,170 @@
+/* Reset and body styling */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  color: #333;
 }
 
+/* App container */
 .app {
-  width: 400px;
+  width: 90%;
+  max-width: 500px;
   background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+/* Headers */
 h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Buttons */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Start/Login page */
+.start-page,
+.login-page,
+.quizzes-page {
   text-align: center;
 }
 
 .start-page button,
-.navigation button,
-.score-page button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 6px;
+.login-page button,
+.quizzes-page button {
+  width: 60%;
+}
+
+/* Quiz list page */
+.quizzes-page ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quizzes-page li {
+  background: #f9f9f9;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
   cursor: pointer;
-  margin: 5px;
-  font-size: 16px;
+  transition: all 0.2s ease;
 }
 
-.start-page button:hover,
-.navigation button:hover,
-.score-page button:hover {
-  background-color: #45a049;
+.quizzes-page li:hover {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
 }
 
+/* Question list */
 .question ul {
   list-style-type: none;
   padding: 0;
 }
 
 .question li {
-  margin: 8px 0;
+  margin: 12px 0;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
 }
 
+.question li:hover {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.question input[type="radio"],
+.question input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #4caf50;
+}
+
+/* Navigation buttons container */
 .navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
-.navigation button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+/* Score page */
+.score-page {
+  text-align: center;
+}
+
+.score-page h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .app {
+    padding: 30px 20px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  h1, h2, h3 {
+    font-size: 18px;
+  }
 }

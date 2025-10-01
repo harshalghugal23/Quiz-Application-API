@@ -45,6 +45,21 @@ class QuizService:
             }
             out.append(qdict)
         return out
+    # Add this inside QuizService class
+    @staticmethod
+    def get_quiz_question_by_index(quiz_id: int, index: int):
+        quiz = Quiz.query.get(quiz_id)
+        if not quiz or index < 0 or index >= len(quiz.questions):
+            return None
+
+        q = quiz.questions[index]
+        return {
+            'id': q.id,
+            'text': q.text,
+            'type': q.type,
+            'options': [{'id': o.id, 'text': o.text} for o in q.options] if q.type in ('single','multiple') else [],
+            'max_words': q.max_words if q.max_words else (300 if q.type=='text' else None)
+        }
 
     @staticmethod
     def evaluate_submission(quiz_id: int, answers: list):

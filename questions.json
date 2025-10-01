@@ -1,0 +1,89 @@
+[
+  {
+    "title": "General Knowledge Quiz",
+    "questions": [
+      {
+        "text": "What is the capital of France?",
+        "type": "single",
+        "options": [
+          {"text": "Paris", "is_correct": true},
+          {"text": "London", "is_correct": false},
+          {"text": "Berlin", "is_correct": false},
+          {"text": "Madrid", "is_correct": false}
+        ]
+      },
+      {
+        "text": "Solve 5 + 7 = ?",
+        "type": "single",
+        "options": [
+          {"text": "10", "is_correct": false},
+          {"text": "12", "is_correct": true},
+          {"text": "11", "is_correct": false},
+          {"text": "13", "is_correct": false}
+        ]
+      },
+      {
+        "text": "Describe the water cycle.",
+        "type": "text"
+      },
+      {
+        "text": "Which planet is known as the Red Planet?",
+        "type": "single",
+        "options": [
+          {"text": "Mars", "is_correct": true},
+          {"text": "Venus", "is_correct": false},
+          {"text": "Jupiter", "is_correct": false},
+          {"text": "Saturn", "is_correct": false}
+        ]
+      },
+      {
+        "text": "Who wrote 'Romeo and Juliet'?",
+        "type": "single",
+        "options": [
+          {"text": "William Shakespeare", "is_correct": true},
+          {"text": "Charles Dickens", "is_correct": false},
+          {"text": "Leo Tolstoy", "is_correct": false},
+          {"text": "Mark Twain", "is_correct": false}
+        ]
+      },
+      {
+        "text": "Explain photosynthesis in plants.",
+        "type": "text"
+      },
+      {
+        "text": "Which element has the chemical symbol 'O'?",
+        "type": "single",
+        "options": [
+          {"text": "Oxygen", "is_correct": true},
+          {"text": "Gold", "is_correct": false},
+          {"text": "Osmium", "is_correct": false},
+          {"text": "Iron", "is_correct": false}
+        ]
+      },
+      {
+        "text": "What is the largest ocean on Earth?",
+        "type": "single",
+        "options": [
+          {"text": "Pacific Ocean", "is_correct": true},
+          {"text": "Atlantic Ocean", "is_correct": false},
+          {"text": "Indian Ocean", "is_correct": false},
+          {"text": "Arctic Ocean", "is_correct": false}
+        ]
+      },
+      {
+        "text": "Explain Newton's First Law of Motion.",
+        "type": "text"
+      },
+      {
+        "text": "Which country is known as the Land of the Rising Sun?",
+        "type": "single",
+        "options": [
+          {"text": "Japan", "is_correct": true},
+          {"text": "China", "is_correct": false},
+          {"text": "Thailand", "is_correct": false},
+          {"text": "South Korea", "is_correct": false}
+        ]
+      }
+    ]
+  }
+]

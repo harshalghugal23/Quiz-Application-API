@@ -26,3 +26,12 @@ class Option(db.Model):
     question_id = Column(Integer, ForeignKey('questions.id'), nullable=False)
     text = Column(String(500), nullable=False)
     is_correct = Column(Boolean, default=False)
+
+class User(db.Model):
+    __tablename__ = "users"
+    id = Column(Integer, primary_key=True)
+    username = Column(String(100), unique=True, nullable=False)
+    password = Column(String(200), nullable=False)  # store hashed passwords in prod
+
+    def __repr__(self):
+        return f"<User {self.username}>"
