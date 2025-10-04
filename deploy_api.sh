@@ -60,8 +60,6 @@ service_exists() {
 if [ -f "$BACKEND_IMAGE_TAR" ]; then
   log "Importing backend image..."
   sudo gzip -dc "$BACKEND_IMAGE_TAR" | sudo microk8s ctr image import -
-
-  sudo microk8s ctr image import "$BACKEND_IMAGE_TAR"
   IMAGE_ID=$(sudo microk8s ctr images list | grep app:latest | awk '{print $1}')
   if [ -n "$IMAGE_ID" ]; then
     sudo microk8s ctr images tag "$IMAGE_ID" "$BACKEND_IMAGE_NAME"
