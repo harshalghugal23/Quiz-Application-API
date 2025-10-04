@@ -104,18 +104,13 @@ if ! service_exists quiz-backend-nodeport; then
     --name=quiz-backend-nodeport \
     --port=5001 \
     --target-port=5001 \
-    --node-port=$BACKEND_NODEPORT -n $NAMESPACE
+    -n $NAMESPACE
 fi
+BACKEND_NODEPORT=$(sudo microk8s kubectl get svc quiz-backend-nodeport \
+  -n $NAMESPACE \
+  -o jsonpath='{.spec.ports[0].nodePort}')
 
-if ! service_exists quiz-mysql-nodeport; then
-  log "Optional: Exposing MySQL via NodePort ($MYSQL_NODEPORT)..."
-  sudo microk8s kubectl expose deployment quiz-mysql \
-    --type=NodePort \
-    --name=quiz-mysql-nodeport \
-    --port=3306 \
-    --target-port=3306 \
-    --node-port=$MYSQL_NODEPORT -n $NAMESPACE
-fi
+log "Backend NodePort is $BACKEND_NODEPORT"
 
 # ------------------------------
 # PORT FORWARDING (fallback)
