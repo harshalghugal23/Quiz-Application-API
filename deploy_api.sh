@@ -3,6 +3,7 @@
 # ------------------------------
 # CONFIGURATION
 # ------------------------------
+source k8s/pull_img.sh
 source k8s/setup_microk8s.sh
 
 echo "======================================"

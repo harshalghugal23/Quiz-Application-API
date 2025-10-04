@@ -44,7 +44,8 @@ sudo microk8s stop
 
 echo "[*] Uninstalling MicroK8s..."
 sudo snap remove microk8s
-
+sudo rm -rf Quiz-Application-API
+cd  
 echo "======================================"
 echo "[*] Cleanup completed!"
 echo "======================================"
