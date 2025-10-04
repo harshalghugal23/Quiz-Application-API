@@ -3,22 +3,26 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
+  namespace: quiz-api
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
+  storageClassName: microk8s-hostpath
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: quiz-mysql
 spec:
-  ports:
-    - port: 3306
   selector:
     app: quiz-mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -34,22 +38,22 @@ spec:
         app: quiz-mysql
     spec:
       containers:
-      - name: mysql
-        image: mysql:8
-        env:
-          - name: MYSQL_ROOT_PASSWORD
-            value: rootpass
-          - name: MYSQL_DATABASE
-            value: quizdb
-          - name: MYSQL_USER
-            value: dev
-          - name: MYSQL_PASSWORD
-            value: devpass
-        ports:
-          - containerPort: 3306
-        volumeMounts:
-          - mountPath: /var/lib/mysql
-            name: mysql-storage
+        - name: mysql
+          image: mysql:8
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: rootpass
+            - name: MYSQL_DATABASE
+              value: quizdb
+            - name: MYSQL_USER
+              value: dev
+            - name: MYSQL_PASSWORD
+              value: devpass
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: mysql-storage
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
